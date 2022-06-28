@@ -131,7 +131,7 @@ docker compose down
 - Variant C also applies if you want to access the database from any other containerized application on the same machine (e.g., a Jupyter notebook server).
 - If port `5432` is already taken on your host machine, you can also change the first number before the double colon in the `ports` section to a port of your choice (e.g., the result would be `54320:5432`). The same applies to port `80` in the *pgAdmin* service section, of course.
 - If not otherwise specified, all commands are executed on the host machine with the working directory being the cloned repository.
-- This repository is intended for local use only. Even though easily implementable best practices for creating Dockerfiles were followed, deployment in a production setting would require additional security mechanisms, specifically the handling of user credentials in the *.env* file in the *import-data* service.
+- This repository is intended for local use only. Even though some of the best practices for creating Dockerfiles were followed, deployment in a production setting would require additional security mechanisms.
 - The DESCRIPTION file in this repository is a small variation of [the file provided by OHDSI](https://github.com/OHDSI/ETL-Synthea/blob/master/DESCRIPTION). The two R scripts for data import partially reuse [existing code](https://github.com/OHDSI/ETL-Synthea/blob/master/extras/codeToRun.R) from the OHDSI consortium.
 - This project intentionally refrains from using a copyleft license. Nevertheless, all users are kindly invited to contribute to the project, specifically to leave a note to the author if you find parts of the code to be broken or the explanations in this README ambiguous.
 
