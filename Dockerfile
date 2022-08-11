@@ -8,7 +8,7 @@ RUN groupadd -r leastprivilegedgroup && \
     useradd -r -s /bin/false -g leastprivilegedgroup leastprivilegeduser
 
 RUN apt-get update \
- && apt-get install -y --no-install-recommends wget=1.21.3-1+b2 default-jdk=2:1.11-72 libcurl4-openssl-dev=7.83.1-2 libssl-dev=3.0.3-8 libxml2-dev=2.9.14+dfsg-1 libgit2-dev=1.3.0+dfsg.1-3 \
+ && apt-get install -y --no-install-recommends wget default-jdk libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev libharfbuzz-dev libfribidi-dev libfontconfig1-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev libpq-dev \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 

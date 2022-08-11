@@ -50,6 +50,8 @@ Building the images, spinning up the containers and executing the ETL scripts wi
 
 Wait for the process to finish.
 
+*(Known issue: Closing the lid of a laptop or, more generally, sending the host machine to sleep might compromise the successful completion of this step.)*
+
 **4) Shut down the orchestrated containers:**
 
 After finishing, shut down the orchestrated containers by executing the following command:
@@ -132,10 +134,12 @@ docker compose down
 - If port `5432` is already taken on your host machine, you can also change the first number before the double colon in the `ports` section to a port of your choice (e.g., the result would be `54320:5432`). The same applies to port `80` in the *pgAdmin* service section, of course.
 - If not otherwise specified, all commands are executed on the host machine with the working directory being the cloned repository.
 - This repository is intended for local use only. Even though some of the best practices for creating Dockerfiles were followed, deployment in a production setting would require additional security mechanisms.
+- One of these mechanisms would be to pin versions (of R and Linux system libraries) to ensure exact reproducibility. However, this is not a straightforward task, and in this case here it can be rather safely assumed that non-static versions of Linux system libraries (for the *import-data* image/container) would not alter the behaviour of the actual embedded *R* scripts.
+- Specifically, a known issue in this context is the rapid change of Linux system libraries dependencies of the *devtools* package executed in the first *R* script inside the *import-data* image/container. Required future additions to the Linux system libraries dependencies will likely be pointed at in the console output upon building the *import-data* image. They should subsequently be added to line 11 in the *Dockerfile*. Future iterations of this repository might download the *devtools* package at a specific version and `COPY` it during the build phase of the image to avoid this issue.
 - The DESCRIPTION file in this repository is a small variation of [the file provided by OHDSI](https://github.com/OHDSI/ETL-Synthea/blob/master/DESCRIPTION). The two R scripts for data import partially reuse [existing code](https://github.com/OHDSI/ETL-Synthea/blob/master/extras/codeToRun.R) from the OHDSI consortium.
 - This project intentionally refrains from using a copyleft license. Nevertheless, all users are kindly invited to contribute to the project, specifically to leave a note to the author if you find parts of the code to be broken or the explanations in this README ambiguous.
 
 
-*(Written by [Jan Philipp Sachs](www.jpsachs.de) on June 24, 2022)*
+*(Written by [Jan Philipp Sachs](www.jpsachs.de); updated on August 11, 2022)*
 
 **\*** *The (standardized) vocabularies need to be downloaded first from [Athena](https://athena.ohdsi.org), a service provided by OHDSI, the not-for-profit consortium behind the OMOP data standard. To that end, create a free account there, then proceed with the recommended vocabularies and wait for the download to be accessible (you will receive an email, this may take some time). If you need procedures from the CPT-4 terminology to be included into your database, you will need to follow the provided instructions (a corresponding shell script is provided with the download).*
