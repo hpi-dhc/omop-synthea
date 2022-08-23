@@ -18,9 +18,9 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN mkdir ../data \
     && mkdir ../data/ETL-Synthea \
-    && wget --progress=bar:force:noscroll https://github.com/OHDSI/ETL-Synthea/archive/462344ed1e9a883d360e4cd5c5a292cac07463c8.tar.gz \
-    && tar -xf 462344ed1e9a883d360e4cd5c5a292cac07463c8.tar.gz -C /data/ETL-Synthea --strip-components=1 \
-    && rm 462344ed1e9a883d360e4cd5c5a292cac07463c8.tar.gz \
+    && wget --progress=bar:force:noscroll https://github.com/OHDSI/ETL-Synthea/archive/f63b9fc2ef13d29b8e7cf6a62c1bec11960e0922.tar.gz \
+    && tar -xf f63b9fc2ef13d29b8e7cf6a62c1bec11960e0922.tar.gz -C /data/ETL-Synthea --strip-components=1 \
+    && rm f63b9fc2ef13d29b8e7cf6a62c1bec11960e0922.tar.gz \
     && chown -R leastprivilegeduser:leastprivilegedgroup /app \
     && chown -R leastprivilegeduser:leastprivilegedgroup /data
 
