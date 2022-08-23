@@ -13,7 +13,7 @@ services:
       restart_policy:
         condition: on-failure
   postgres:
-    image: postgres:14.2
+    image: postgres:14.5
     expose:
       - "5432"
     ports:
@@ -24,7 +24,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
   pgadmin:
-    image: dpage/pgadmin4:6.6
+    image: dpage/pgadmin4:6.12
     ports:
       - "80:80"
     volumes:

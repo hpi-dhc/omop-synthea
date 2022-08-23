@@ -1,4 +1,4 @@
-FROM r-base:4.1.2
+FROM r-base:4.2.1
 
 LABEL maintainer="Jan Philipp Sachs" \
       email="jan-philipp.sachs@hpi.de" \
