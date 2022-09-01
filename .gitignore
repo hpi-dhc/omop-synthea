@@ -1,8 +1,5 @@
-/data
-/omop-cdm/*
-/synthea-csv/*
 **/
 
+*.log
 .env
-
 *.DS_Store
