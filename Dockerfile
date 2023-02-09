@@ -5,7 +5,7 @@ LABEL maintainer="Jan Philipp Sachs" \
       institution="Hasso Plattner Institute, University of Potsdam, Germany"
 
 RUN groupadd -r leastprivilegedgroup && \
-    useradd -r -s /bin/false -g leastprivilegedgroup leastprivilegeduser
+    useradd -r -m -s /bin/false -g leastprivilegedgroup leastprivilegeduser
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends wget default-jdk libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev libharfbuzz-dev libfribidi-dev libfontconfig1-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev libpq-dev \
